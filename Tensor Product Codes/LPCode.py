@@ -1,10 +1,9 @@
 import code
 import numpy as np
 from algebra import (
-    RingElement, RingMatrix, multiply,
+    RingElement, RingMatrix,
     GroupAlgebraElement, RingLifter,
     GroupAlgebraMatrix,
-    lift_to_binary
 )
 from HGPCode import HGP
 
@@ -99,4 +98,5 @@ print("n, k =", code.parameters())
 H_X, H_Z = code.parity_checks()
 print("H_X shape:", H_X.shape)
 print("H_Z shape:", H_Z.shape)'''
+
 
