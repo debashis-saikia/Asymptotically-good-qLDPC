@@ -10,13 +10,21 @@ from HGPCode import HGP
 
 class LPC:
     """
-    Full Lifted Product Code constructor.
+    Lifted Product Codes (Panteleev-Kalachev Codes) can be viewed as a natural generalization of Hypergraph Product Codes (HGPs). 
+    Indeed, these codes were first introduced as 'Generalized Hypergraph Product codes' by Panteleev and Kalachev.
 
-    Pipeline:
-    Abstract Ring Matrices (A, B)
-        → Group Algebra Lift
-        → Binary Permutation Expansion
-        → Hypergraph Product (CSS Code)
+    In a Hypergraph Product Code, one starts with two classical parity-check matrices A and B defined over the binary field F₂. 
+    These matrices define a chain complex whose tensor-product construction yields the CSS parity check matrices H_X and H_Z.
+
+    In a Lifted Product Code, this idea is generalized by replacing the binary
+    parity-check matrices with RingArrays (matrices over a ring), typically a
+    group algebra F_q[G] of a finite group G over a finite field F_q. 
+    
+    References:
+        . https://errorcorrectionzoo.org/c/lifted_product
+        . P. Panteleev and G. Kalachev, “Degenerate Quantum LDPC Codes With Good Finite Length Performance”, Quantum 5, 585 (2021) arXiv:1904.02703 DOI
+        . P. Panteleev and G. Kalachev, “Asymptotically Good Quantum and Locally Testable Classical LDPC Codes”, (2022) arXiv:2111.03654
+        . P. Panteleev and G. Kalachev, “Quantum LDPC Codes With Almost Linear Minimum Distance”, IEEE Transactions on Information Theory 68, 213 (2022) arXiv:2012.04068 DOI
 
     Outputs:
     - H_X, H_Z
@@ -98,5 +106,6 @@ print("n, k =", code.parameters())
 H_X, H_Z = code.parity_checks()
 print("H_X shape:", H_X.shape)
 print("H_Z shape:", H_Z.shape)'''
+
 
 
