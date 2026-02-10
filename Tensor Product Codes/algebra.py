@@ -17,7 +17,6 @@ def multiply(a, b):
     ax, ay = a.coeffs
     bx, by = b.coeffs
 
-    # x² = 0, y² = 0, xy = yx
     c = (ax & by) ^ (ay & bx)
 
     return RingElement([c, c])
@@ -176,5 +175,6 @@ HA = lift_to_binary(GA)
 HB = lift_to_binary(GB)
 
 print("Binary AB = 0 ?", np.all((HA @ HB) % 2 == 0))'''
+
 
 
