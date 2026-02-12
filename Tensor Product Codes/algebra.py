@@ -2,7 +2,6 @@ import numpy as np
 
 class RingElement:
     def __init__(self, coeffs):
-        # coeffs is a binary vector, e.g. [1,0] = x
         self.coeffs = np.array(coeffs, dtype=np.uint8) % 2
 
     def __add__(self, other):
@@ -29,7 +28,6 @@ class RingMatrix:
         if self.data.shape[1] != other.data.shape[0]:
             raise ValueError("Dimension mismatch")
 
-        # construct zero element dynamically
         zero = RingElement([0] * len(self.data[0,0].coeffs))
 
         result = [[zero for _ in range(other.data.shape[1])]
@@ -64,7 +62,6 @@ class GroupAlgebraElement:
         return GroupAlgebraElement(self.coeffs ^ other.coeffs, self.n)
 
     def __mul__(self, other):
-        # convolution modulo n
         result = np.zeros(self.n, dtype=np.uint8)
         for i, a in enumerate(self.coeffs):
             if a:
@@ -85,7 +82,7 @@ class GroupAlgebraMatrix:
         if self.data.shape[1] != other.data.shape[0]:
             raise ValueError("Dimension mismatch")
 
-        L = self.data[0,0].n   # ← FIX HERE
+        L = self.data[0,0].n   
         zero = GroupAlgebraElement([0]*L, L)
 
         result = [[zero for _ in range(other.data.shape[1])]
@@ -109,7 +106,7 @@ class GroupAlgebraMatrix:
 class RingLifter:
     def __init__(self, generator_images):
         self.images = generator_images
-        self.L = generator_images[0].n   # ← FIX HERE
+        self.L = generator_images[0].n   
 
     def lift(self, ring_element):
         result = GroupAlgebraElement([0]*self.L, self.L)
@@ -175,6 +172,7 @@ HA = lift_to_binary(GA)
 HB = lift_to_binary(GB)
 
 print("Binary AB = 0 ?", np.all((HA @ HB) % 2 == 0))'''
+
 
 
 
